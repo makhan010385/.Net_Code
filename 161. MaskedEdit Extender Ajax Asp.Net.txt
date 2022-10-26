@@ -1,0 +1,18 @@
+The MaskEditExtender Control is an Asp.net Ajax Extender That Attaches to a TextBox Control to restrict the kind of Text That Can Be Entered.MaskEdit applies "Mask" to the input that permits only certain types of characters to be entered.
+
+-------
+
+<ajaxToolkit:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" BehaviorID="TextBox1_MaskedEditExtender" 
+Mask="999999999999" 
+
+MaskType="Number" 
+
+MessageValidatorTip="true"  
+
+TargetControlID ="TextBox1" 
+
+ErrorTooltipEnabled="true">
+                   
+
+</ajaxToolkit:MaskedEditExtender>
+

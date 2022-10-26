@@ -1,0 +1,35 @@
+Important Namespaces Used
+--------------------------
+
+using System.Data.SqlClient;
+using System.Data;
+
+---------------------------
+
+PageLoad Event Coding
+---------------------------
+
+ String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=BubbleChart; Integrated Security=True";
+        String myquery = "Select * from SubjectData";
+        SqlConnection con = new SqlConnection(mycon);
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        int nrow;
+        nrow=ds.Tables[0].Rows.Count;
+        int i = 0;
+        while ( i< nrow)
+        {
+            BubbleChart1.BubbleChartValues.Add(new AjaxControlToolkit.BubbleChartValue { Data = Convert.ToInt16(ds.Tables[0].Rows[i]["Percentage"].ToString()), Category = ds.Tables[0].Rows[i]["SubjectName"].ToString(), X = Convert.ToInt16(ds.Tables[0].Rows[i]["x"].ToString()), Y = Convert.ToInt16(ds.Tables[0].Rows[i]["y"].ToString()), BubbleColor="YELLOW" });
+            i = i + 1;
+        }
+        con.Close();
+
+        BubbleChart1.ChartTitle = "Percentage of Passed Students - Subject Wise";
+
+
+-----------------------------

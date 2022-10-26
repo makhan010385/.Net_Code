@@ -1,0 +1,34 @@
+What is DynamicPopulate Extender Control
+-----------------------------------------
+
+DynamicPopulate is a simple extender that replaces the contents of a control with the result of a web service or page method call.
+
+
+-----------------------------------------
+
+
+Coding For Web Service
+-----------------------------------------
+
+
+[System.Web.Script.Services.ScriptMethod()]
+    [System.Web.Services.WebMethod]
+    public static String GetData()
+    {
+        return "Today is "+DateTime.Now.ToLongDateString();
+
+    }
+
+------------------------------------------
+
+Important Properties
+------------------------------------------
+
+PopulateTriggerControlID="Button1" 
+
+TargetControlID="Label3" 
+
+ServiceMethod="GetData"
+
+------------------------------------------
+

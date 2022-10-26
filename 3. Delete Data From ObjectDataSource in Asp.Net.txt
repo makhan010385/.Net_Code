@@ -1,0 +1,27 @@
+public DataSet GetCustomerDetail1()
+        {
+            String constring = "Data Source=VIKAS-PC\\SQLEXPRESS; Initial Catalog=customerdatabase; Integrated Security=true";
+            SqlConnection sqlcon = new SqlConnection(constring);
+            String query = "select * from customerdetail";
+            SqlCommand sqlcmd = new SqlCommand();
+            sqlcmd.CommandText = query;
+            sqlcmd.Connection = sqlcon;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = sqlcmd;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+
+        }
+
+
+ public void deleteCustomerDetail1(int customerid)
+        {
+            String constring = "Data Source=VIKAS-PC\\SQLEXPRESS; Initial Catalog=customerdatabase; Integrated Security=true";
+            SqlConnection sqlcon = new SqlConnection(constring);
+            SqlCommand sqlcmd = new SqlCommand("delete from customerdetail where customerid=" + customerid, sqlcon);
+            sqlcon.Open();
+            sqlcmd.ExecuteNonQuery();
+            sqlcon.Close();
+
+        }

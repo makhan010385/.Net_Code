@@ -1,0 +1,42 @@
+The UpdatePanelAnimation Extender in used to play animation while an UpdatePanel is Updating and after it has finished properly.
+
+
+
+
+Important Coding For UpdatPanelAnimation Extender
+----------------------------------------------------
+
+TargetControl="UpdatePanel1"
+
+
+<Animations>
+                <OnUpdating>
+                    <Sequence>
+                        <Color AnimationTarget="Button1" Duration="50" StartValue="#FF0000" EndValue="#666666" PropertyKey="backgroundColor" />
+                        <EnableAction Enabled="True" />
+                    </Sequence>
+                </OnUpdating>
+                <OnUpdated>
+                    <Sequence>
+                        <Parallel Duration="3" Fps="30" >
+                        <FadeIn AnimationTarget="Button1" />
+                            </Parallel>
+                    </Sequence>
+
+                </OnUpdated>
+
+
+            </Animations>
+
+--------------------------------------------------------
+
+
+Coding in Update Panel in Asp.Net
+--------------------------------------------------------
+
+<Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
+            </Triggers>
+
+
+--------------------------------------------------------

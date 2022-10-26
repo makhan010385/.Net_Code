@@ -1,0 +1,14 @@
+BalloonPopupExtender is Used to Display Popup That Can Contain any Content.
+
+
+Important Coding For BalloonPopupExtender Control
+--------------------------------------------------
+
+<ajaxToolkit:BalloonPopupExtender ID="BalloonPopupExtender1" runat="server" TargetControlID="TextBox1" BalloonPopupControlID="Panel1" BalloonStyle="Rectangle" BalloonSize="Medium" UseShadow="true" DisplayOnFocus="true"></ajaxToolkit:BalloonPopupExtender>
+
+
+        <ajaxToolkit:BalloonPopupExtender ID="BalloonPopupExtender2" runat="server" TargetControlID="TextBox2" BalloonPopupControlID="Panel2" BalloonStyle="Rectangle" BalloonSize="Medium" UseShadow="true" DisplayOnFocus="true"></ajaxToolkit:BalloonPopupExtender>
+
+
+
+---------------------------------------------------

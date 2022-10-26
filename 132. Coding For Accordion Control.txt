@@ -1,0 +1,43 @@
+CSS Used in This Example
+============================
+ <style type="text/css">
+        .content1 { margin: 1em; border-collapse: collapse; }
+        .header1 { padding: .3em; border: 1px #ccc solid; background: #fc9; cursor: pointer}
+    </style>
+
+
+=============================
+
+
+Accordion Coding
+---------------------
+
+<ajaxToolkit:Accordion ID="Accordion1" runat="server">
+            <Panes>
+                <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server" ContentCssClass="" HeaderCssClass="">
+                    <Header>
+                        What is Ajax Technology?
+                    </Header>
+                    <Content>
+                        Ajax is a client-side script that communicates to and from a server/database without the need for a postback or a complete page refresh.
+                    </Content>
+                </ajaxToolkit:AccordionPane>
+                <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server" ContentCssClass="" HeaderCssClass="">
+                    <Header>
+                        What is Jquery Technology?
+                    </Header>
+                    <Content>
+                        jQuery is a fast and concise JavaScript Library created by John Resig in 2006 with a nice motto - Write less, do more.jQuery simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
+                    </Content>
+                </ajaxToolkit:AccordionPane>
+                <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server" ContentCssClass="" HeaderCssClass="">
+                    <Header>
+                        What is Angular JS Technology?
+                    </Header>
+                    <Content>
+                        AngularJS is a structural framework for dynamic web apps. It lets you use HTML as your template language and lets you extend HTML's syntax to express your application's components clearly and succinctly.
+                    </Content>
+                </ajaxToolkit:AccordionPane>
+            </Panes>
+        </ajaxToolkit:Accordion>
+------------------

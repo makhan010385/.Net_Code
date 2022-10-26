@@ -1,0 +1,23 @@
+The Calendar Extender is an Asp.Net Ajax Control That is associated with a TextBox Control. When the user clicks on the TextBox, a Client-Side Calendar Control Popup.
+
+--------------
+
+Important Properties of CalendarExtender Control
+
+1. TargetControlID
+
+2. PopupButtonID
+
+3. PopupPosition
+
+4. Format
+
+
+---------------
+
+Button Click Event Coding ( Book Now Button )
+--------------------------
+
+Label3.Text = "You Have Book Your Journey on " + TextBox1.Text;
+
+---------------------------

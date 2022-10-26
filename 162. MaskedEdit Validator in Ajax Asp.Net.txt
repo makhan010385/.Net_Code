@@ -1,0 +1,40 @@
+MaskedEditValidator is used with MaskedEdit Extender Control. It is used to display warning message.
+
+
+--------------------------------------------------------------------------------------------------------------------------
+<ajaxToolkit:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" BehaviorID="TextBox1_MaskedEditExtender" 
+
+AutoCompleteValue="false"  
+
+ClearMaskOnLostFocus="false"  
+
+
+TargetControlID="TextBox1" 
+
+Mask="999999999999" 
+
+MaskType="Number"  
+
+InputDirection="LeftToRight"  >
+                    
+
+</ajaxToolkit:MaskedEditExtender>
+
+--------------------------------------------------------------------------------------------------------------------------
+
+<ajaxToolkit:MaskedEditValidator ID="MaskedEditValidator1" runat="server" ControlExtender="TextBox1_MaskedEditExtender" 
+ControlToValidate="TextBox1" 
+
+EmptyValueMessage="Enter Your Adhaar Number First. Empty Not Accepted" 
+
+InvalidValueMessage="You Have Entered Invalid Adhaar Number. Enter 12 Digits of Adhaar Carefully." 
+
+IsValidEmpty="False" >
+
+</ajaxToolkit:MaskedEditValidator>
+---------------------------------------------------------------------------------------------------------------------------
+
+Coding on PageLoad Event
+--------------------------
+
+ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;

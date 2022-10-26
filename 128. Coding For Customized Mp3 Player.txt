@@ -1,0 +1,65 @@
+Script Used in This Example
+----------------------------
+
+<script src="/script/main.js"></script>
+
+
+----------------------------
+
+CSS Used in This Example
+----------------------------
+
+.bar-wrapper {
+    
+               height: 300px;
+    
+               position: relative;
+
+             }
+
+        .bar {
+            position: relative;
+            bottom: 0;
+            width: 5px;
+            display: inline-block;
+            border: 1px solid red;
+            height: 5px;
+            border-bottom: 3px solid #fff;
+             }
+
+-----------------------------
+
+
+
+
+Namespace Important
+-----------------------------
+
+using System.IO;
+
+-----------------------------
+
+
+
+Upload Button Click Event Coding
+--------------------------------
+
+if (FileUpload1.HasFile)
+        {
+            string path = Path.GetFileName(FileUpload1.FileName);
+            path = path.Replace(" ", "");
+            FileUpload1.SaveAs(Server.MapPath("~/mp3file/") + path);
+            String link = "mp3file/" + path;
+            link = "<canvas id='canvas' width=300 height=150></canvas><br/><audio id=audio Controls><Source src=" + link + " type=audio/mpeg></video>";
+            Literal1.Text = link;
+            Label3.Text = "File Has Been Uploaded Successfully";
+            Panel1.Visible = true;
+
+        }
+        else
+        {
+            Label3.Text = "Kindly Select Mp3 File on Your PC For Upload First";
+
+        }
+
+-----------------------------------

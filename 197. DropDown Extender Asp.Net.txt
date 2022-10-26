@@ -1,0 +1,31 @@
+It can be attached to almost any Asp.Net control to provide a dropdown menu ( like Panel ).
+
+
+-------------
+
+Important Properties of DropDown Extender
+------------------------------------------
+
+DropDownControlID
+
+TargetControlID
+
+
+------------------------------------------
+
+RadioButtonList SelectedIndexChanged Event Coding
+--------------------------------------------------
+
+        DropDownList1.Items.Clear();
+        String country = RadioButtonList1.SelectedItem.Text;
+        DropDownList1.Items.Add(new ListItem(country, country));
+
+
+--------------------------------------------------
+
+Submit Button Click Coding
+--------------------------------------------------
+
+Label3.Text = "You Have Selected Country " + DropDownList1.Text;
+
+--------------------------------------------------

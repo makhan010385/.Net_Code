@@ -1,0 +1,16 @@
+It is a simple Extender Control in Ajax Toolkit That allow us to pin control to the page so that they appear to float with page when it is scrolled or resized
+
+-----------------
+
+Important Properties of AlwaysVisibleControl Extender
+------------------------------------------------------
+
+ TargetControlID="Image1" 
+
+ VerticalSide="Bottom" 
+
+ HorizontalSide="Right" 
+
+ UseAnimation="true"
+
+-------------------------------------------------------

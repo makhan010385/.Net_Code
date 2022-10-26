@@ -1,0 +1,49 @@
+Using System.Drawing;
+---------------------------------------
+
+
+RowDataBound Event Coding in GridView
+---------------------------------------
+
+ if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GridView1, "Select$" + e.Row.RowIndex);
+            e.Row.ToolTip = "Click to select this row.";
+        }
+
+--------------------------------------
+
+
+SelectedIndexChanged Coding in GridView
+---------------------------------------
+
+foreach (GridViewRow row in GridView1.Rows)
+        {
+            if (row.RowIndex == GridView1.SelectedIndex)
+            {
+                row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                row.ToolTip = string.Empty;
+                String pid;
+                pid = row.Cells[0].Text;
+                String pname;
+                pname = row.Cells[1].Text;
+                String price;
+                price = row.Cells[2].Text;
+
+                Label3.Text = "Your Product ID is " + pid;
+                Label4.Text = "Your Product Name is " + pname;
+                Label5.Text = "Your Price is " + price;
+
+
+            }
+            else
+            {
+                row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                row.ToolTip = "Click to select this row.";
+            }
+        }
+            Label3.Visible = true;
+            Label4.Visible = true;
+            Label5.Visible = true;
+
+----------------------------------------

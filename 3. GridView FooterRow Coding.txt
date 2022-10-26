@@ -1,0 +1,23 @@
+using System.Data;
+using System.Data.SqlClient;
+------------------------------
+
+
+Page Load Code
+---------------
+        DataTable dt = new DataTable();
+        String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=ShoppingData; Integrated Security=True";
+        String myquery = "Select * from invoicedetail";
+        SqlConnection con = new SqlConnection(mycon);
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+        con.Close();
+        GridView1.FooterRow.Cells[1].Text = "Total Amount";
+        GridView1.FooterRow.Cells[2].Text = dt.Compute("Sum(price)", "").ToString();

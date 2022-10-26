@@ -1,0 +1,28 @@
+Important Properties of AJAXFileUpload Control
+----------------------------------------------
+
+AllowedFileTypes="jpg,jpeg,pdf"
+
+MaximumNumberOfFiles="5"
+
+----------------------------------------------
+
+
+Coding in Web.config file
+----------------------------------------------
+
+<system.webServer>
+    <handlers>
+      <add name="d" verb="*" path="AjaxFileUploadHandler.axd" type="AjaxControlToolkit.AjaxFileUploadHandler,AjaxControlToolkit"/>
+    </handlers>
+  </system.webServer>
+----------------------------------------------
+
+
+Coding on AjaxFileUpload UploadCompleteEvent
+----------------------------------------------
+
+ string filename = e.FileName;
+        AjaxFileUpload1.SaveAs(Server.MapPath("~/UploadFile/") + filename);
+
+----------------------------------------------

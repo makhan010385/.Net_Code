@@ -1,0 +1,56 @@
+using System.Data.OleDb;
+using System.Data;
+--------------------------
+
+	public OleDbConnection con;
+        public OleDbDataAdapter dad;
+        public OleDbCommand com;
+        public DataSet ds;
+
+---------------------------
+Search Button Coding
+
+	    TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+
+            con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Server.MapPath("~/App_Data/CustomerDatabase.accdb") + "; Persist Security Info=False");
+            con.Open();
+            String data1;
+            data1 = "select * from customerdetail where customerid=" + TextBox1.Text;
+            dad = new OleDbDataAdapter(data1, con);
+            ds = new DataSet();
+            dad.Fill(ds);
+            if (ds.Tables[0].Rows.Count >= 1)
+            {
+                Label2.Text = "Record with Customer ID " + TextBox1.Text + " Found";
+
+                TextBox2.Text = ds.Tables[0].Rows[0]["customername"].ToString();
+                TextBox3.Text = ds.Tables[0].Rows[0]["city"].ToString();
+                TextBox4.Text = ds.Tables[0].Rows[0]["contact"].ToString();
+
+            }
+            else
+            {
+                Label2.Text = "Record with Customer ID " + TextBox1.Text + " Not Found";
+
+            }
+            con.Close();
+
+----------------------------
+Update Button Coding
+
+            con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Server.MapPath("~/App_Data/CustomerDatabase.accdb") + "; Persist Security Info=False");
+            con.Open();
+            String data1;
+            data1 = "Update customerdetail set customername='" + TextBox2.Text + "', city= '" + TextBox3.Text + "', contact='" + TextBox4.Text + "' where customerid=" + TextBox1.Text;
+            com = new OleDbCommand(data1, con);
+            com.ExecuteNonQuery();
+            Label3.Text = "Data has been Updated with Customer ID " + TextBox1.Text;
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            Label2.Text = "";
+
+-----------------------------

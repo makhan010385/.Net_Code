@@ -1,0 +1,61 @@
+Important NameSpaces
+--------------------
+
+using System.Data;
+using System.Data.SqlClient;
+
+--------------------
+
+Search Button Click Event
+--------------------------
+ String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=CollegeData; Integrated Security=True";
+        String myquery = "Select * from studentdata where rollno=" + TextBox1.Text;
+        SqlConnection con = new SqlConnection(mycon);
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            Label3.Text = "Roll Number Found Successfully";
+            TextBox2.Text = ds.Tables[0].Rows[0]["sname"].ToString();
+            TextBox3.Text = ds.Tables[0].Rows[0]["fathername"].ToString();
+            TextBox4.Text = ds.Tables[0].Rows[0]["mothername"].ToString();
+        }
+        else
+        {
+            Label3.Text = "Roll Number Not Found";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+
+        }
+        con.Close();
+        Label4.Text = "";
+
+---------------------------
+
+
+Update Button Click Event
+---------------------------
+
+String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=CollegeData; Integrated Security=True";
+        String updatedata = "Update studentdata set sname='" + TextBox2.Text + "', fathername='" + TextBox3.Text + "', mothername='" + TextBox4.Text + "' where rollno=" + TextBox1.Text;
+        SqlConnection con = new SqlConnection(mycon);
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = updatedata;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+        Label4.Text = "Data Has Been Updated Successfully";
+        Label3.Text = "";
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+        TextBox4.Text = "";
+
+
+----------------------------

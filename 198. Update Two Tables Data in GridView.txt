@@ -1,0 +1,28 @@
+Stored Procedure Coding in SQL Server
+----------------------------------------
+
+create procedure updatetwotable1
+(
+   @srollno int,
+   @sname varchar(50),
+   @fathername varchar(50),
+   @totalmarks int
+)
+as
+Begin
+update studentdetail set sname=@sname, fathername=@fathername where srollno=@srollno
+update marksdetail set totalmarks=@totalmarks where srollno=@srollno
+End
+Return
+
+
+
+----------------------------------------
+
+
+Select Query in SQLDataSource Control
+
+select studentdetail.srollno, studentdetail.sname, studentdetail.fathername, marksdetail.totalmarks from studentdetail INNER JOIN marksdetail on studentdetail.srollno=marksdetail.srollno
+
+
+----------------------------------------

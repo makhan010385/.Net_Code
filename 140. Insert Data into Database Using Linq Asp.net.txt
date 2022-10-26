@@ -1,0 +1,29 @@
+LINQ (Language Integrated Query) is uniform query syntax in C# and VB.NET used to save and retrieve data from different sources.
+It is integrated in C# or VB, thereby eliminating the mismatch between programming languages and databases, as well as providing a single querying interface for different types of data sources.
+
+-----------------------------------------------------------------
+
+LINQ to SQL offers an infrastructure (run-time) for the management of relational data as objects.
+
+
+-----------------------------------------------------------------
+
+Create DBML File Using Object Designer in Linq to SQL Component.
+-----------------------------------------------------------------
+
+Coding on Save Button Click Event
+-----------------------------------------------------------------
+
+        StudentDataContext student = new StudentDataContext();
+        StudentData sd = new StudentData();
+        sd.rollno = Convert.ToInt32(TextBox1.Text);
+        sd.sname = TextBox2.Text;
+        sd.fathername = TextBox3.Text;
+        sd.mothername = TextBox4.Text;
+        student.StudentDatas.InsertOnSubmit(sd);
+        student.SubmitChanges();
+        Label3.Text = "Data Has Been Saved Successfully";
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+        TextBox4.Text = "";

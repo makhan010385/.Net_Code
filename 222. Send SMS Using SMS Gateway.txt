@@ -1,0 +1,32 @@
+Important Namespaces Used
+--------------------------
+
+using System.IO;
+using System.Net;
+using System.Collections.Specialized;
+
+--------------------------
+
+Send Button Click Event
+--------------------------
+
+string countrycode = DropDownList1.SelectedValue.ToString();
+        string mnumber = TextBox1.Text;
+        string destinationaddr = countrycode + mnumber;
+        string message = TextBox2.Text;
+        string result;
+        String message1 = HttpUtility.UrlEncode(message);
+        using (var wb = new WebClient())
+        {
+            byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"apikey" , "QBJnYZjxewA-1A3C338lHgarncxCQDtVVmxvc7dMgS"},
+                {"numbers" , destinationaddr},
+                {"message" , message1},
+                {"sender" , "TXTLCL"}
+                });
+            result = System.Text.Encoding.UTF8.GetString(response);
+        }
+        Label3.Text = "SMS Sent to " + destinationaddr + " Successfully";
+
+-------------------------------

@@ -1,0 +1,65 @@
+Google ReCaptcha is a free Servic from Google That Helps to protect website from spam and abuse that restricts the automated input sent by a system and allow only input from a real human.
+
+
+
+Download ReCaptcha.Dll File From Google
+-----------------------------------------
+
+https://code.google.com/archive/p/recaptcha/downloads
+
+
+-----------------------------------------
+
+
+Create Google ReCaptcha Public and Private Key
+-----------------------------------------------
+
+https://www.google.com/recaptcha/admin#site/339101101?setup
+
+----------------------------------------------
+
+
+Register Google ReCaptcha.dll file in Asp.Net Project
+-----------------------------------------------
+
+<%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %>
+
+-----------------------------------------------
+
+
+Coding For Google ReCaptcha User Control
+------------------------------------------
+
+<asp:Panel ID="Panel1" runat="server">
+            <recaptcha:RecaptchaControl  
+    ID="recaptcha"  
+    runat="server"  
+    PublicKey="6LetRTYUAAAAAKJ21I_z4URdgpQwLtAbmixJT-Ca"  
+    PrivateKey="6LetRTYUAAAAACU2vss8wjfIBbD3rPgTigVuNCGf"  
+    /> 
+ </asp:Panel>
+-----------------------------------------
+
+
+Submit Button Click Event Coding
+-----------------------------------------
+
+if (recaptcha.IsValid)
+        {
+            Label3.Text = "Successfully Validated";
+            Panel1.Visible = false;
+            Button1.Visible = false;
+
+
+
+        }
+        else
+        {
+
+            Label3.Text = "You are not Validated- Re-Enter Captcha Image Properly";
+
+
+        }
+
+-------------------------------------------
+

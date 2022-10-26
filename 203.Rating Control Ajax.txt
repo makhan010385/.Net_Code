@@ -1,0 +1,60 @@
+Ajax Star rating Control allows us to rate specific content on the website.
+
+-----------------------------
+AutoPostback :- This property has to be set to true so that we can store the values of rating for each user.
+
+StarCSSClass :- This property will show the star on the web.
+
+WaitingStarCSSClass :- This property will show the star when you hover the mouse on the Rate Control.
+
+FilledStarCSSClass :- This property will show the rating on the stars with stars highlighted.
+
+EmptyStarCSSClass :- This property will show empty stars.
+
+-------------------------------
+
+CSS Coding For Stars
+-------------------------------
+
+.starempty
+        {
+            background-image: url(stars/starempty.png);
+            width: 50px;
+            height: 50px;
+        }
+.starfilled
+        {
+            background-image: url(stars/starfilled.png);
+            width: 50px;
+            height: 50px;
+        }
+.starwaiting
+        {
+            background-image: url(stars/starwaiting.png);
+            width: 50px;
+            height: 50px;
+        }
+
+---------------------------------
+
+Properties of Star Rating Control in Ajax
+
+---------------------------------
+
+MaxRating="5" 
+
+CurrentRating="1"  
+
+StarCssClass="starempty" 
+
+FilledStarCssClass="starfilled" 
+
+WaitingStarCssClass="starwaiting" 
+
+EmptyStarCssClass="starempty" 
+
+OnChanged="Rating1_Changed" 
+
+AutoPostBack="true"
+
+----------------------------------

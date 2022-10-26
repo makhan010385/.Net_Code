@@ -1,0 +1,63 @@
+Important Namespaces Used
+---------------------------
+
+using System.Data;
+using System.Data.OracleClient;
+
+
+---------------------------
+
+
+Search Button Click Event Coding
+----------------------------------
+
+String mycon = "Data Source=XE;User ID=system;Password=123456;Unicode=True";
+        String myquery = "Select * from studentdata where srollno=" + TextBox1.Text;
+        OracleConnection con = new OracleConnection(mycon);
+        OracleCommand cmd = new OracleCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        OracleDataAdapter da = new OracleDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            Label3.Text = "Particular Rollno Found Successfully";
+            TextBox2.Text = ds.Tables[0].Rows[0]["sname"].ToString();
+            TextBox3.Text = ds.Tables[0].Rows[0]["fname"].ToString();
+            TextBox4.Text = ds.Tables[0].Rows[0]["mname"].ToString();
+        }
+        else
+        {
+            Label3.Text = "Particular Rollno Not Found - Search Again";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+
+        }
+        con.Close();
+
+------------------------------------
+
+
+Delete Button Click Event Coding
+-----------------------------------
+
+
+ String mycon = "Data Source=XE;User ID=system;Password=123456;Unicode=True";
+        String updatedata = "delete from studentdata where srollno=" + TextBox1.Text;
+        OracleConnection con = new OracleConnection(mycon);
+        con.Open();
+        OracleCommand cmd = new OracleCommand();
+        cmd.CommandText = updatedata;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+        Label4.Text = "Data Has Been Deleted";
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+        TextBox4.Text = "";
+        Label3.Text = "";
+
+------------------------------------

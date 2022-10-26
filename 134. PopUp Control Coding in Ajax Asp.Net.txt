@@ -1,0 +1,49 @@
+PopupControl is an ASP.NET AJAX extender that can be attached to any control in order to open a 
+popup window that displays additional content. This popup window will probably be interactive and 
+will probably be within an ASP.NET AJAX UpdatePanel
+
+
+
+RadioButtonList Selected Index Changed Coding
+----------------------------------------------
+
+ PopupControlExtender1.Commit(RadioButtonList1.SelectedValue);
+
+
+
+----------------------------------------------
+
+
+Submit Button Click Coding
+----------------------------------------------
+
+ Label3.Text = "You Have Successfully Submitted Your University " + TextBox1.Text;
+
+
+----------------------------------------------
+
+
+
+PopUpControl Coding in Source Editor ( Use it According to Method Provide in Video - Watch Video First )
+----------------------------------------------
+
+<ajaxToolkit:PopupControlExtender ID="PopupControlExtender1" runat="server" TargetControlID="TextBox1" PopupControlID="Panel1" Position="Bottom" CommitProperty="value"></ajaxToolkit:PopupControlExtender>
+        <asp:Panel ID="Panel1" runat="server" BackColor="#CCFFFF">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                        <asp:ListItem>Guru Nanak Dev University</asp:ListItem>
+                        <asp:ListItem>Punjab Technical University</asp:ListItem>
+                        <asp:ListItem>Lovely Professional University</asp:ListItem>
+                        <asp:ListItem>Punjabi University</asp:ListItem>
+                        <asp:ListItem>Chandigarh University</asp:ListItem>
+                    </asp:RadioButtonList>
+                    <br />
+                    <br />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <br />
+
+        </asp:Panel>
+
+---------------------------------------------

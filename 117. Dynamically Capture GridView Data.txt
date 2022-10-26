@@ -1,0 +1,136 @@
+using System.Data;
+using System.Data.SqlClient;
+
+---------------------------------
+
+
+Page Load Coding
+-----------------
+
+if(!IsPostBack)
+        {
+            DataTable dt = new DataTable();
+            DataRow dr = null;
+            dt.Columns.Add(new DataColumn("sno", typeof(String)));
+            dt.Columns.Add(new DataColumn("productname", typeof(String)));
+            dt.Columns.Add(new DataColumn("quantity", typeof(String)));
+            dt.Columns.Add(new DataColumn("amount", typeof(String)));
+            dr = dt.NewRow();
+            dr["sno"] = 1;
+            dr["productname"] = string.Empty;
+            dr["quantity"] = string.Empty;
+            dr["amount"] = string.Empty;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["sno"] = 2;
+            dr["productname"] = string.Empty;
+            dr["quantity"] = string.Empty;
+            dr["amount"] = string.Empty;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["sno"] = 3;
+            dr["productname"] = string.Empty;
+            dr["quantity"] = string.Empty;
+            dr["amount"] = string.Empty;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["sno"] = 4;
+            dr["productname"] = string.Empty;
+            dr["quantity"] = string.Empty;
+            dr["amount"] = string.Empty;
+            dt.Rows.Add(dr);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+}
+-----------------
+
+Save Button Click Coding
+-------------------------
+ String name = TextBox1.Text;
+        String address = TextBox2.Text;
+        foreach(GridViewRow row in GridView1.Rows)
+        {
+            Label lbl = (Label)row.FindControl("Label3");
+            Int32 sno = Convert.ToInt32(lbl.Text);
+            TextBox tb = (TextBox)row.FindControl("TextBox3");
+            String productname = tb.Text ;
+
+           
+            if (productname == "")
+            {
+               
+            }
+            else
+            {
+                TextBox tb1 = (TextBox)row.FindControl("TextBox4");
+                Int32 quantity = Convert.ToInt32(tb1.Text);
+                TextBox tb2 = (TextBox)row.FindControl("TextBox5");
+                Int32 price = Convert.ToInt32(tb2.Text);
+                savedata(name,address,sno, productname, quantity, price);
+            }
+
+        }
+        EmptyGridView();
+        Label4.Text = "Data Has Been Saved";
+
+------------------------------
+
+
+User Defined Function
+---------------------
+public void savedata(String name,String address,Int32 sno,String productname,Int32 quantity,Int32 amount)
+    {
+        String query = "insert into orderdetail(name,address,sno,productname,quantity,amount) values('"+name+"','"+address+"'," + sno + ",'" + productname + "'," + quantity + "," + amount + ")";
+        String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=purchasedatabase; Integrated Security=true";
+        SqlConnection con = new SqlConnection(mycon);
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = query;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        
+
+        
+    }
+
+-------------------
+
+User Defined Function
+--------------------
+public void EmptyGridView()
+    {
+        DataTable dt = new DataTable();
+        DataRow dr = null;
+        dt.Columns.Add(new DataColumn("sno", typeof(String)));
+        dt.Columns.Add(new DataColumn("productname", typeof(String)));
+        dt.Columns.Add(new DataColumn("quantity", typeof(String)));
+        dt.Columns.Add(new DataColumn("amount", typeof(String)));
+        dr = dt.NewRow();
+        dr["sno"] = 1;
+        dr["productname"] = string.Empty;
+        dr["quantity"] = string.Empty;
+        dr["amount"] = string.Empty;
+        dt.Rows.Add(dr);
+        dr = dt.NewRow();
+        dr["sno"] = 2;
+        dr["productname"] = string.Empty;
+        dr["quantity"] = string.Empty;
+        dr["amount"] = string.Empty;
+        dt.Rows.Add(dr);
+        dr = dt.NewRow();
+        dr["sno"] = 3;
+        dr["productname"] = string.Empty;
+        dr["quantity"] = string.Empty;
+        dr["amount"] = string.Empty;
+        dt.Rows.Add(dr);
+        dr = dt.NewRow();
+        dr["sno"] = 4;
+        dr["productname"] = string.Empty;
+        dr["quantity"] = string.Empty;
+        dr["amount"] = string.Empty;
+        dt.Rows.Add(dr);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+    }

@@ -1,0 +1,33 @@
+NoBot is used to protect websites from Bot. We use CAPTCHA also to prevent entries from BOT, But We can use this NoBot Control to achieve the same.
+
+----------------------------
+
+Important Properties
+----------------------------
+
+ResponseMinimumDelaySeconds="3" 
+
+CutoffMaximumInstances="3" 
+
+
+CutoffWindowSeconds="10"
+
+
+-----------------------------
+
+
+Button Click Event Coding
+------------------------------
+
+NoBotState nbs;
+        if(NoBot1.IsValid())
+        {
+            Label3.Text = "Hello " + TextBox1.Text + " , You are Valid User";
+
+        }
+        else
+        {
+            Label3.Text = "Hello " + TextBox1.Text + " , You are considered as Bot - Invalid User";
+        }
+
+------------------------------

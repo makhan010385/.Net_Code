@@ -1,0 +1,27 @@
+FormView Control ItemUpdated Event
+-----------------------------------
+ Label4.Text = "Data Updated Successfully";
+        FormView1.Visible = false;
+
+
+-----------------------------------
+
+
+Click To Search Button Click Event
+-----------------------------------
+
+ if(SqlDataSource1!=null)
+        {
+            FormView1.Visible = true;
+            Label3.Text = "Roll Number Found Successfully";
+        }
+        else
+        {
+            Label3.Text = "Roll Number Not Found ";
+            FormView1.Visible = false;
+        }
+
+        Label4.Text = "";
+
+
+-----------------------------------

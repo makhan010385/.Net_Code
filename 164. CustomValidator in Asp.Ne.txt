@@ -1,0 +1,45 @@
+Button Click Event Coding
+--------------------------
+
+  if(Page.IsValid)
+        {
+            Label3.Text = "You Have Entered Valid Even Number " + TextBox1.Text;
+        } 
+
+
+--------------------------
+
+
+User Defined Server Side Script For Custom Validator
+----------------------------------------------------
+
+protected void CheckNumber(object sender, ServerValidateEventArgs e)
+    {
+
+ int number = Convert.ToInt16(e.Value);
+
+        if (number% 2==0)
+            e.IsValid = true;
+        else
+            e.IsValid = false;
+
+}
+
+----------------------------------------------------
+
+Important Properties of CustomValidator
+----------------------------------------------------
+
+ErrorMessage="*Number is Not Even Number" 
+
+OnServerValidate="CheckNumber" 
+
+ControlToValidate="TextBox1"
+
+====================================================
+
+PageLoad Coding
+
+ ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+------------------------------------------------------

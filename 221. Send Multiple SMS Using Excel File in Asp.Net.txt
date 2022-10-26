@@ -1,0 +1,71 @@
+Important Namespaces Used
+---------------------------
+
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Data.OleDb;
+using System.Net;
+using System.Collections.Specialized;
+
+----------------------------
+
+Send Button Click Event Coding
+-------------------------------
+
+	string mobilenumber;
+        String sname;
+        string path = Path.GetFileName(FileUpload1.FileName);
+        path = path.Replace(" ", "");
+        FileUpload1.SaveAs(Server.MapPath("~/ExcelFile/") + path);
+        String ExcelPath = Server.MapPath("~/ExcelFile/") + path;
+        OleDbConnection mycon = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ExcelPath + "; Extended Properties=Excel 8.0; Persist Security Info = False");
+        mycon.Open();
+        OleDbCommand cmd = new OleDbCommand("select * from [Sheet1$]", mycon);
+        OleDbDataReader dr = cmd.ExecuteReader();
+        
+        while (dr.Read())
+        {
+            if (dr[0].ToString() == "")
+            {
+                break;
+            }
+
+            sname = dr[0].ToString();
+            mobilenumber = dr[1].ToString();
+            sendsms(mobilenumber, sname);
+
+            ListBox1.Items.Add(mobilenumber + " " + sname);
+
+        }
+        Label3.Text = "SMS Sent Successfully to All Students";
+        mycon.Close();
+-----------------------------------
+
+Userdefined Method in Coding
+-----------------------------------
+
+private void sendsms(string mnumber, string sname)
+    {
+        string destinationaddr = "91" + mnumber;
+        string message = TextBox1.Text;
+        string result;
+        String message1 = HttpUtility.UrlEncode(message);
+        using (var wb = new WebClient())
+        {
+            byte[] response = wb.UploadValues("https://api.textlocal.in/send/", new NameValueCollection()
+                {
+                {"apikey" , "USE YOUR API KEY HERE"},
+                {"numbers" , destinationaddr},
+                {"message" , message1},
+                {"sender" , "TXTLCL"}
+                });
+            result = System.Text.Encoding.UTF8.GetString(response);
+
+
+
+        }
+        
+    }
+
+-------------------------------------

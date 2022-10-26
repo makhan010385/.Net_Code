@@ -1,0 +1,24 @@
+ColorPicker is an Asp.Net Ajax Extender That Can Be Attached to Any Asp.Net TextBox Control. It Provides Client-Side Picking Functionality with UI in a Popup block.
+
+--------------------
+
+Important Properties of ColorPicker Extender Control Ajax
+-----------------------------------------------------------
+
+1. TargetControlID
+
+2. SampleControlID
+
+3. PopupControlID
+
+------------------------------------------------------------
+
+Button Click Event Coding ( Change Background Button )
+
+body1.Attributes.Add("bgcolor", TextBox1.Text);
+
+
+<body id="body1" runat="server">
+
+------------------------------------------------------------
+

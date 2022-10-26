@@ -1,0 +1,14 @@
+Animation Extender Coding
+--------------------------
+
+ <Animations>
+                <OnMouseOver>
+                    <Resize AnimationTarget="Image1" width="350" height="350" unit="px" />
+                </OnMouseOver>
+                <OnMouseOut>
+                    <Resize AnimationTarget="Image1" width="307" height="230" unit="px" />
+                </OnMouseOut>
+ </Animations>
+
+
+---------------------------

@@ -1,0 +1,19 @@
+Important Properties of BarChart Control in Ajax
+----------------------------------------------------
+
+ChartHeight="500" 
+
+ChartWidth="700" 
+
+ChartTitle="Student Annual Performance (Result)" 
+
+CategoriesAxis="Hindi, English, Mathematics, Science, Geography" 
+
+CategoryAxisLineColor="DarkRED"
+------------------
+
+<Series>
+                <ajaxToolkit:BarChartSeries Name="Suresh" BarColor="YELLOW" Data="85,95,66,73,84" />
+
+</Series>
+--------------------

@@ -1,0 +1,19 @@
+Page Load Event Coding
+--------------------------------
+
+        StudentDataContext sd = new StudentDataContext();
+        var studentdata = from studentable in sd.StudentDatas
+                          select new
+                          {
+                              studentable.rollno,
+                              studentable.sname,
+                              studentable.fathername,
+                              studentable.mothername
+
+                          };
+        GridView1.DataSource = studentdata;
+        GridView1.DataBind();
+
+
+
+---------------------------------- 

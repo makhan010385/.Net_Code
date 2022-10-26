@@ -1,0 +1,24 @@
+Important Properties of Bubble Chart in Ajax
+--------------------------------------------
+
+ChartHeight="400" 
+
+ChartWidth="400" 
+
+ChartTitle="Percentage of Passed Students Subject Wise" 
+
+ChartTitleColor="RED" 
+
+BubbleSizes="5" 
+
+ <BubbleChartValues>
+                
+		<ajaxToolkit:BubbleChartValue Category="English" X="10" Y="1000" Data="35" BubbleColor="BLUE" />
+
+                <ajaxToolkit:BubbleChartValue Category="Hindi" X="30"   Y="2000" Data="45" BubbleColor="YELLOW" />
+
+                <ajaxToolkit:BubbleChartValue Category="Mathematics" X="60" Y="3000" Data="65" BubbleColor="GREEN" />
+            
+ </BubbleChartValues>
+
+------------------------------------------------

@@ -1,0 +1,85 @@
+Coding For Login Control Authenticate Event
+----------------------------------------------
+if(e.Authenticated)
+        {
+            Response.Redirect("AdminHome.aspx");
+        }
+        if(ValidateUser(Login1.UserName,Login1.Password))
+        {
+            Response.Redirect("AdminHome.aspx");
+        }
+        else
+        {
+            e.Authenticated = false;
+        }
+
+
+------------------------------------------------
+
+private bool ValidateUser(String username,String password)
+    {
+        bool status;
+        String mycon = "Data Source=HP-PC\\SQLEXPRESS;Initial Catalog=AdminLogin;Integrated Security=True";
+        SqlConnection scon = new SqlConnection(mycon);
+        String myquery = "select * from logindetail";
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = scon;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        String uname;
+        String pass;
+        uname = ds.Tables[0].Rows[0]["uname"].ToString();
+        pass = ds.Tables[0].Rows[0]["upass"].ToString();
+        scon.Close();
+        if (uname == username && pass == password)
+        {
+            Session["username"] = uname;
+            status = true;
+        }
+        else
+        {
+            status = false;
+        }
+        return status;
+    }
+----------------------------------------------
+
+
+Coding For Web.Config File
+----------------------------------------------
+ <appSettings>
+    <add key="ValidationSettings:UnobtrusiveValidationMode" value="None" />
+  </appSettings>
+
+-----------------------------------------------
+
+Use Two Properties
+--------------------
+
+InstructionText
+FailureText
+DisplayRememberMe
+
+--------------------
+
+Page Load Coding For AdminHome.aspx
+------------------------------------
+
+if (Session["username"] != null)
+        {
+            Label2.Text = "Hello, " + Session["username"].ToString();
+            
+
+
+        }
+        else
+        {
+            Response.Redirect("LoginPage.aspx");
+          
+        }
+
+
+------------------------------------

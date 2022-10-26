@@ -1,0 +1,36 @@
+ToggleButton Extender Ajax in Asp.Net
+--------------------------------------
+
+It is an Asp.Net Ajax Extender That Can Be Attached To an Asp.Net CheckBox Control. ToggleButton enables the use of Custom Images instead of Tick Mark in The CheckBox. The Behaviour of The CheckBox is Unaffected.
+
+---------------------------------------
+
+
+Important Properties of ToggleButton Extender
+---------------------------------------------
+
+TargetControlID="CheckBox1" 
+
+CheckedImageUrl="check.png" 
+
+UncheckedImageUrl="uncheck.png" 
+
+ImageWidth="40" 
+
+ImageHeight="46"
+----------------------------------------------
+
+Submit Button Click Event Coding
+----------------------------------------------
+
+if(CheckBox1.Checked)
+        {
+            Label4.Text = "Thanks For Having Interest in Hariti Study Hub Channel";
+        }
+        else
+        {
+            Label4.Text = "Thanks and Visit Again Hariti Study Hub, In Future We hope You will Work with Us";
+        }
+
+
+-----------------------------------------------

@@ -1,0 +1,28 @@
+Important Namespaces Used
+-------------------------
+
+using System.Data;
+using System.Data.OracleClient;
+
+-------------------------
+
+
+Retrieve Button Click Event Coding
+------------------------------------
+
+        String mycon = "Data Source=XE;User ID=system;Password=123456;Unicode=True";
+        String myquery = "Select * from studentdata";
+        OracleConnection con = new OracleConnection(mycon);
+        OracleCommand cmd = new OracleCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        OracleDataAdapter da = new OracleDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        GridView1.DataSource = ds;
+        GridView1.DataBind();
+        
+        con.Close();
+
+--------------------------------------

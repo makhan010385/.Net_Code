@@ -1,0 +1,50 @@
+Important NameSpaces Used
+-------------------------
+
+using System.Data;
+using System.Data.SqlClient;
+
+
+-------------------------
+
+
+Update Attendance Button Click Event
+-------------------------------------
+
+foreach (GridViewRow row in GridView1.Rows)
+        {
+            CheckBox status = (row.Cells[3].FindControl("CheckBox1") as CheckBox);
+            int rollno = Convert.ToInt32(row.Cells[1].Text);
+            if (status.Checked)
+            {
+                updaterow(rollno, "true");
+            }
+            else
+            {
+                updaterow(rollno, "false");
+
+            }
+
+
+
+        }
+
+
+---------------------------------------
+
+
+User Defined Function to Update Data in Database
+-------------------------------------------------
+
+ private void updaterow(int rollno, String markstatus)
+    {
+        String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=StudentAttendance; Integrated Security=True";
+        String updatedata = "Update attendancedetail set attendancemark='" + markstatus + "' where rollno=" + rollno;
+        SqlConnection con = new SqlConnection(mycon);
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = updatedata;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+        Label2.Text = "Data Has Been Saved Successfully";
+    } 

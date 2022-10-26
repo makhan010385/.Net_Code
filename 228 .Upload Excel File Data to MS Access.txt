@@ -1,0 +1,53 @@
+Important Namespaces Used
+-------------------------
+
+using System.Data;
+using System.Data.OleDb;
+using System.IO;
+
+-------------------------
+
+Upload and Save Button Click Event Coding
+----------------------------------------
+
+int rollno;
+        String sname;
+        String fname;
+        String sclass;
+        string path = Path.GetFileName(FileUpload1.FileName);
+        path = path.Replace(" ", "");
+        FileUpload1.SaveAs(Server.MapPath("~/ExcelFile/") + path);
+        String ExcelPath = Server.MapPath("~/ExcelFile/") + path;
+        OleDbConnection mycon = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + ExcelPath + "; Extended Properties=Excel 8.0; Persist Security Info = False");
+        mycon.Open();
+        OleDbCommand cmd = new OleDbCommand("select * from [Sheet1$]", mycon);
+        OleDbDataReader dr = cmd.ExecuteReader();
+        while (dr.Read())
+        {
+            // Response.Write("<br/>"+dr[0].ToString());
+            rollno = Convert.ToInt32(dr[0].ToString());
+            sname = dr[1].ToString();
+            fname = dr[2].ToString();
+            sclass = dr[3].ToString();
+            savedata(rollno, sname, fname, sclass);
+}
+        Label3.Text = "Data Has Been Saved Successfully";
+-----------------------------------
+
+user defined method coding
+-----------------------------------
+
+private void savedata(int rollno1, String sname1, String fname1, String sclass1)
+    {
+        OleDbConnection con;
+        OleDbCommand com;
+        con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + Server.MapPath("~/App_Data/StudentData.accdb") + "; Persist Security Info=False");
+        con.Open();
+        String data1;
+        data1 = "insert into studentdetails values(" + rollno1 + ",'" + sname1 + "','" + fname1 + "','" + sclass1 + "')";
+        com = new OleDbCommand(data1, con);
+        com.ExecuteNonQuery();
+        con.Close();
+        Label3.Text = "Data Has Been Upload to MS Access Database Successfully";
+       
+    }

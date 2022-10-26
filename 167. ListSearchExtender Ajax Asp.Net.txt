@@ -1,0 +1,17 @@
+What is ListSearchExtender?
+
+Ans: It Provides the ability to search items in Listbox and DropDownlist Control by Typing. It performs searching on the basis of typed input.
+
+---------
+
+Important Properties of ListSearchExtender :
+
+TargetControlID="DropDownList1"
+
+ PromptText="Type ID to Search" 
+
+PromptPosition="Top" 
+
+QueryPattern="StartsWith" 
+
+IsSorted="true" 

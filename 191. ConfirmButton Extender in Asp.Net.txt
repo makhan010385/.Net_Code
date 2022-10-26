@@ -1,0 +1,73 @@
+ConfirmButton Extender
+-----------------------
+
+It Catches clicks on a button, after catching the clicks from button. It display a message to the user.
+
+
+----------------------
+
+Important Namespace
+----------------------
+
+using System.Data;
+using System.Data.SqlClient;
+
+----------------------
+
+Search Button Click Event Coding
+---------------------------------
+
+String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=StudentData; Integrated Security=True";
+        String myquery = "Select * from studentInfo where srollno=" + TextBox1.Text;
+        SqlConnection con = new SqlConnection(mycon);
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+            Label3.Text = "Rollno Found";
+            TextBox2.Text = ds.Tables[0].Rows[0]["sname"].ToString();
+            TextBox3.Text = ds.Tables[0].Rows[0]["fathername"].ToString();
+            
+        }
+        else
+        {
+            Label3.Text = "Rollno Not Found";
+
+        }
+        con.Close();
+
+
+----------------------------------
+
+
+Delete Button Coding
+----------------------------------
+
+ String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=StudentData; Integrated Security=True";
+        String updatedata = "delete from studentinfo where srollno=" + TextBox1.Text;
+        SqlConnection con = new SqlConnection(mycon);
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = updatedata;
+        cmd.Connection = con;
+        cmd.ExecuteNonQuery();
+        Label4.Text = "Student Record Has Been Deleted";
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+
+
+-----------------------------------
+
+Important Properties of ConfirmButton Extender
+------------------------------------------------
+
+ConfirmText="Are You Sure to Delete Searched Rollno" 
+
+TargetControlID="Button2"
+

@@ -1,0 +1,24 @@
+Coding For Save Button Click Event
+------------------------------------
+
+ Try
+            Dim con As New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" & Server.MapPath("~/App_Data/StudentData.accdb") & "; Persist Security Info=False")
+
+            Dim query As String
+            query = "INSERT into personalInfo(srollno,sname,fname,mname) values(" + TextBox1.Text + ",'" + TextBox2.Text + "','" + TextBox3.Text + "','" + TextBox4.Text + "')"
+
+
+            Dim cmd As New OleDbCommand(query, con)
+            con.Open()
+            cmd.ExecuteNonQuery()
+            Label3.Text = "Data Has Been Saved Successfully"
+            con.Close()
+
+        Catch ex As Exception
+            Label3.Text = "There is Some Problem While Saving Data" & ex.ToString()
+
+        End Try
+
+
+
+------------------------------

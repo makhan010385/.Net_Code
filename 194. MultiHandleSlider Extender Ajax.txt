@@ -1,0 +1,43 @@
+MultiHandleSlider Extender
+---------------------------
+
+We can use multihandle slider extender to show two or more slider in a webpage from user select value like from and to price.
+
+
+---------------------------
+
+
+Important Properties of MultiHandleSlider Extender
+---------------------------------------------------
+
+HandleAnimationDuration="0.1" 
+
+Maximum="10000" 
+
+Minimum="500" 
+
+TargetControlID="TextBox1" 
+
+Length="200"
+
+
+----------------------------------------------------
+
+Configuration in MultiHandleSlider Extender
+----------------------------------------------------
+
+<MultiHandleSliderTargets>
+                            <ajaxToolkit:MultiHandleSliderTarget ControlID="TextBox2" />
+                            <ajaxToolkit:MultiHandleSliderTarget ControlID="TextBox3" />
+
+</MultiHandleSliderTargets>4
+
+---------------------------------------------------
+
+Button Click Event Coding
+---------------------------------------------------
+
+Label3.Text = "You Have Selected Price Range " + TextBox2.Text + " to " + TextBox3.Text;
+
+
+----------------------------------------------------

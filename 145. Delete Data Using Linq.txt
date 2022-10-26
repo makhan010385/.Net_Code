@@ -1,0 +1,42 @@
+static StudentDataContext sd;
+static StudentData student;
+
+---------------------------------
+
+Search Button Click Event Coding
+---------------------------------
+
+ sd = new StudentDataContext();
+
+        student = (from s in sd.StudentDatas
+                               where s.rollno.ToString() == TextBox1.Text
+                               select s).FirstOrDefault();
+        if (student == null)
+        {
+            Label3.Text = "No Rollno Found - Search Again";
+        }
+        else
+        {
+            Label3.Text = "Rollno Found Successfully";
+            TextBox2.Text = student.sname;
+            TextBox3.Text = student.fathername;
+            TextBox4.Text = student.mothername;
+        }
+        Label4.Text = "";
+
+-----------------------------------
+
+Delete Button Click Event Coding
+-----------------------------------
+
+ sd.StudentDatas.DeleteOnSubmit(student);
+        sd.SubmitChanges();
+        Label4.Text = "Data Has Been Deleted Successfully";
+        Label3.Text = "";
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+        TextBox4.Text = "";
+
+
+-----------------------------------

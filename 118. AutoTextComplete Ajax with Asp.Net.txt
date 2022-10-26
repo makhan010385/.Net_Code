@@ -1,0 +1,60 @@
+Download Link For AjaxControlToolKit
+
+https://ajaxcontroltoolkit.codeplex.com/
+=========================================
+
+using System.Data;
+using System.Data.SqlClient;
+-------------------------------
+
+
+Coding For AutoTextComplete Based TextBox
+------------------------------------------
+
+[System.Web.Script.Services.ScriptMethod()]
+    [System.Web.Services.WebMethod]
+    public static List<string> SearchUser(string prefixText)
+    {
+        SqlConnection con = new SqlConnection("Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=HaritiBook; Integrated Security=True");
+        SqlDataAdapter da;
+        DataTable dt;
+        DataTable Result = new DataTable();
+        string str = "select profilename from userdetail where profilename like '" + prefixText + "%'";
+
+        da = new SqlDataAdapter(str, con);
+        dt = new DataTable();
+        da.Fill(dt);
+        List<string> Output = new List<string>();
+        for (int i = 0; i < dt.Rows.Count; i++)
+            Output.Add(dt.Rows[i][0].ToString());
+
+        con.Close();
+        return Output;
+    }
+
+----------------------------------------------
+
+Submit Button Click Event
+
+Label3.Text = "Your Selected Subject is " + TextBox1.Text;
+
+-----------------------------------------------
+
+
+Properties Setting for AutoTextComplete Extender
+--------------------------------------------------
+
+
+CompletionSetCount="10"
+
+DelimiterCharacters="" 
+
+TargetControlID="TextBox1"
+
+ServiceMethod="SearchUser"
+
+
+CompletionInterval="100" 
+
+MinimumPrefixLength="1"
+

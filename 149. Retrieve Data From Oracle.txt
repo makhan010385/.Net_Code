@@ -1,0 +1,22 @@
+Download Link For Oracle 11G Express Edition
+-----------------------------------------------
+
+ http://www.oracle.com/technetwork/products/express-edition/downloads/index.html
+
+
+
+-----------------------------------------------
+
+Commands Used in SQL Command Prompt
+
+------------------------------------------------
+
+1. connect system;
+
+2. select instance_name from v$instance;
+
+3. create table studentinfo(srollno int, sname char(50), fname char(50), mname char(50));
+
+4. insert into studentinfo values(1001, 'rakesh', 'rahul', 'Priyanka');
+
+5. select * from studentinfo;

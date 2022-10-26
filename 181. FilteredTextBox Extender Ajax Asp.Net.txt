@@ -1,0 +1,17 @@
+
+
+Important Properties
+----------------------
+
+TargetControlID="TextBox1" 
+
+Enabled="true" 
+
+FilterType="Custom" 
+
+FilterMode="ValidChars" 
+
+ValidChars="0123456789"
+
+------------------------
+

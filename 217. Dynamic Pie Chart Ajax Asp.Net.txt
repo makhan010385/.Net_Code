@@ -1,0 +1,43 @@
+Important Namespace Used
+------------------------
+using System.Data;
+using System.Data.SqlClient;
+
+------------------------
+
+View Performance Button Click Event
+-------------------------------------
+
+ decimal[] marks = new decimal[4];
+        String[] subject = new string[4];
+        String mycon = "Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=CourseResult; Integrated Security=True";
+        String myquery = "Select * from studentdata where Rollno=" + DropDownList1.Text;
+        SqlConnection con = new SqlConnection(mycon);
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandText = myquery;
+        cmd.Connection = con;
+        SqlDataAdapter da = new SqlDataAdapter();
+        da.SelectCommand = cmd;
+        DataSet ds = new DataSet();
+        da.Fill(ds);
+        if (ds.Tables[0].Rows.Count > 0)
+        {
+
+            marks[0] = Convert.ToInt16(ds.Tables[0].Rows[0]["hindimarks"].ToString());
+            marks[1] = Convert.ToInt16(ds.Tables[0].Rows[0]["mathmarks"].ToString());
+            marks[2] = Convert.ToInt16(ds.Tables[0].Rows[0]["sciencemarks"].ToString());
+            marks[3] = Convert.ToInt16(ds.Tables[0].Rows[0]["englishmarks"].ToString());
+            subject[0] = "Hindi";
+            subject[1] = "Math";
+            subject[2] = "Science";
+            subject[3] = "English";
+        }
+        con.Close();
+       
+            PieChart1.PieChartValues.Add(new AjaxControlToolkit.PieChartValue { Data = marks[0], Category = subject[0], PieChartValueColor="GREEN" });
+        PieChart1.PieChartValues.Add(new AjaxControlToolkit.PieChartValue { Data = marks[1], Category = subject[1], PieChartValueColor = "RED" });
+        PieChart1.PieChartValues.Add(new AjaxControlToolkit.PieChartValue { Data = marks[2], Category = subject[2], PieChartValueColor = "BLUE" });
+        PieChart1.PieChartValues.Add(new AjaxControlToolkit.PieChartValue { Data = marks[3], Category = subject[3], PieChartValueColor = "YELLOW" });
+        PieChart1.ChartTitle = "Student Result 2017 :: "+ds.Tables[0].Rows[0]["studentname"].ToString();
+
+---------------------------------------

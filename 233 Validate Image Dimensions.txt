@@ -1,0 +1,47 @@
+Upload Button Click Coding
+----------------------------
+
+
+        if (FileUpload1.HasFile == true)
+        {
+
+            String contenttype = FileUpload1.PostedFile.ContentType;
+
+            if (contenttype == "image/jpeg")
+            {
+
+                FileUpload1.SaveAs(Server.MapPath("~/") + FileUpload1.FileName);
+                Image1.ImageUrl = FileUpload1.FileName;
+               
+                System.Drawing.Image img = System.Drawing.Image.FromStream(FileUpload1.PostedFile.InputStream);
+                int height = img.Height;
+                int width = img.Width;
+                if(height==190 && width==150)
+                {
+                    FileUpload1.SaveAs(Server.MapPath("~/") + FileUpload1.FileName);
+                    Image1.ImageUrl = FileUpload1.FileName;
+                    Image1.Visible = true;
+                    Label3.Text = "Uploaded Image in Proper Format and Dimensions : Successfully Saved";
+                }
+                else
+                {
+                    Label3.Text = "Kindly Upload JPEG Image in Proper Dimensions 150 x 190";
+                }
+
+              
+
+            }
+
+            else
+            {
+                Label3.Text = "Only JPEG/JPG Image File Acceptable - Please Upload Image File Again";
+
+            }
+        }
+        else
+        {
+            Label3.Text = "You have not selected any file - Browse and Select File First";
+
+        }
+
+---------------------------

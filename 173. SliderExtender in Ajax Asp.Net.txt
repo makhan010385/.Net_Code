@@ -1,0 +1,27 @@
+SliderExtender in Ajax Asp.Net
+
+SliderExtender Control Allow asp.net developers to upgrade a TextBox Server Control to a Graphical Slider. The Slider provide a way to users to choose a numeric value from a finite range.
+
+
+Important Properties:
+
+1. TargetControlID
+2. Minimum
+3. Maximum
+4. BoundControlID
+
+
+-------
+
+Submit Button Click Event Coding
+---------------------------------
+
+        int w = Convert.ToInt32(TextBox1.Text);
+        int h = Convert.ToInt32(TextBox2.Text);
+        Image1.Width = w;
+        Image1.Height = h;
+
+
+----------------------------------
+
+

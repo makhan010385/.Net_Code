@@ -1,0 +1,94 @@
+CascadingDropDown is an ASP.NET AJAX extender that can be attached to an ASP.NET DropDownList control. It will automatically 
+
+populate set of DropDownList controls without page postback. Each time the selection of one the DropDownList controls changes,
+
+the CascadingDropDown makes a call to a specified web service to retrieve the list of values for the next DropDownList in the 
+set.
+
+
+Important Properties of CascadingDropDown Extender
+-------------------------------------------------
+
+TargetControlID="DropDownList2" 
+
+Category="brand" 
+
+ParentControlID="DropDownList1" 
+
+LoadingText="Loading Brands..." 
+
+PromptText="Select Brand" 
+
+ServiceMethod="BindBrand" 
+
+ServicePath="~/MyWebService.asmx"
+
+
+--------------------------------------------------
+
+Coding in Service Method ( Web Service )
+
+--------------------------------------------------
+
+SqlConnection conn = new SqlConnection("Data Source=HP-PC\\SQLEXPRESS; Initial Catalog=ProductDatabase; Integrated Security=True");
+    //Web method for bind country
+    [WebMethod]
+    public CascadingDropDownNameValue[] BindProduct(string knownCategoryValues, string category)
+    {
+        DataSet ds = new DataSet();
+        conn.Open();
+        SqlCommand cmd = new SqlCommand("select * from productdetail", conn);
+        SqlDataAdapter adp = new SqlDataAdapter(cmd);
+        cmd.ExecuteNonQuery();
+        adp.Fill(ds);
+        conn.Close();
+        List<CascadingDropDownNameValue> ProductDetails = new List<CascadingDropDownNameValue>();
+        foreach (DataRow DR in ds.Tables[0].Rows)
+        {
+            string productID = DR["productid"].ToString();
+            string productName = DR["productname"].ToString();
+            ProductDetails.Add(new CascadingDropDownNameValue(productName, productID));
+        }
+        return ProductDetails.ToArray();
+    }
+    //Web method for bind state
+    [WebMethod]
+    public CascadingDropDownNameValue[] BindBrand(string knownCategoryValues, string category)
+    {
+        DataSet ds = new DataSet();
+        int ProductID;
+        StringDictionary ProductDetails = AjaxControlToolkit.CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
+        ProductID = Convert.ToInt32(ProductDetails["product"]);
+        conn.Open();
+        SqlCommand cmd = new SqlCommand("select * from BrandDetail where productid=@ProductID", conn);
+        cmd.Parameters.AddWithValue("@ProductID", ProductID);
+        cmd.ExecuteNonQuery();
+        SqlDataAdapter adp = new SqlDataAdapter(cmd);
+        adp.Fill(ds);
+        conn.Close();
+        List<CascadingDropDownNameValue> BrandDetails = new List<CascadingDropDownNameValue>();
+        foreach (DataRow DR in ds.Tables[0].Rows)
+        {
+            string brandID = DR["brandid"].ToString();
+            string brandName = DR["brandname"].ToString();
+            BrandDetails.Add(new CascadingDropDownNameValue(brandName, brandID));
+        }
+        return BrandDetails.ToArray();
+    }
+
+-------------------------------------------
+
+Important Namespaces Used in Webservice
+-------------------------------------------
+
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using AjaxControlToolkit;
+
+--------------------------------------------

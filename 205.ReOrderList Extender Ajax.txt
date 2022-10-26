@@ -1,0 +1,73 @@
+What is ReOrderList Extender in Ajax
+-------------------------------------
+
+The ReorderList Control in Ajax provides a list that can be reordered by the user via drag and Drop. The Current order of the list shall be persisted on the server by database updation.
+
+
+-------------------------------------
+
+CSS Coding
+-------------------------------------
+
+<style type="text/css">
+        .DragHandleClass
+        {
+            width:20px;
+            height:20px;
+            background-color:red;
+            cursor:move;
+            
+        }
+    </style>
+
+-------------------------------------
+
+Important Properties
+-------------------------------------
+
+AllowReorder="True"  
+
+SortOrderField="position" 
+
+DataKeyField="movieid" 
+
+DataSourceID="SqlDataSource1"  
+
+Height="96px" Width="189px" 
+
+PostBackOnReorder="False"
+
+------------------------------------
+
+Coding in ReOrderList Tag
+------------------------------------
+
+<DragHandleTemplate>
+                
+	<div class="DragHandleClass">
+        
+	</div>
+
+</DragHandleTemplate>
+            
+<ItemTemplate>
+                
+	<asp:Label ID="Label4" runat="server" Text='<%#Eval("moviename") %>' />
+
+</ItemTemplate>
+
+
+--------------------------------------
+
+SQLDataSource Configuration
+--------------------------------------
+
+OldValuesParameterFormatString="original_{0}"
+
+select [movieid],[moviename],[category],[position] from [topmovie] order by [position]
+update [topmovie] set position=@position where [movieid]=@original_movieid
+
+<UpdateParameters>
+                <asp:Parameter Name="position" Type="Int32"/>
+                <asp:Parameter Name="original_movieid" />
+</UpdateParameters>

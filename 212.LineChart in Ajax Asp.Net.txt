@@ -1,0 +1,24 @@
+Important Properties in LineChart Ajax Control
+-----------------------------------------------
+
+CategoriesAxis="1st,2nd,3rd,4th,5th"
+
+ChartTitle="Matches in ODI" 
+
+ChartType="Basic"
+
+
+----------------------------------------
+
+LineChartSeries under LineChart Ajax Control
+--------------------
+
+LineColor="DarkBlue" 
+
+Name="Virat Kohli" 
+
+Data="65,75,120,95,52"
+
+-----------------------------------------
+
+

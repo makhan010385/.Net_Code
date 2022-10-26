@@ -1,0 +1,15 @@
+SQL Query For All Medicines
+------------------------------
+select medname,mdate=CONVERT(varchar, mdate, 103),expirydate=CONVERT(varchar, expirydate, 103)  from medicinedetail
+
+
+
+-------------------------------
+
+SQL Query for Non-Expired Medicines
+-----------------------------------
+
+select medname,mdate=CONVERT(varchar, mdate, 103),expirydate=CONVERT(varchar, expirydate, 103)  from medicinedetail where expirydate>GetDate()
+
+
+------------------------------------

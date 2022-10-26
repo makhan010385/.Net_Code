@@ -1,0 +1,53 @@
+The ModalPopup Extender Allow a page to display content to the user in a "Modal" manner which prevent the user from interacting with the rest of the page.
+
+--------------------
+
+CSS Coding for Popup Background
+-------------------------------
+
+ .modalBackground { 
+            background-color:#333333; 
+            filter:alpha(opacity=70); 
+            opacity:0.7; 
+        } 
+
+--------------------------------
+
+Important Properties of ModalPopupExtender
+---------------------------------
+
+PopupControlID="Panel1" 
+TargetControlID="Button1" 
+OkControlID="Button2" 
+CancelControlID="Button3" 
+BackgroundCssClass="modalBackground"
+
+--------------------------------
+
+
+
+
+PageLoad Coding
+--------------------------------
+
+ Panel1.Style.Value = "display:none;";
+
+-------------------------------
+
+
+
+Button Click Event Coding
+-------------------------------
+
+Label4.Text = "You Have Voted For : "+RadioButtonList1.SelectedItem.Text;
+
+-------------------------------
+
+Set OkButton Property
+-------------------------------
+
+UseSubmitBehavior="False"
+
+-------------------------------
+
+
